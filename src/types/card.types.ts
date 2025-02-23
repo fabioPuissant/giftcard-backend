@@ -1,0 +1,1 @@
+type RedeemedBy = string | false;
