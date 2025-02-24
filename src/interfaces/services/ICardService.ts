@@ -6,4 +6,5 @@ export interface ICardService {
   getCardDetails(cardId: string): Promise<ICard>;
   requestRedemption(cardId: string, recipientId: string): Promise<any>; // or a more specific return type
   confirmRedemption(cardId: string, giverId: string, redemptionId: string): Promise<any>;
+  createCard(qrCode: string): Promise<ICard>;
 }

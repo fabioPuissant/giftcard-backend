@@ -1,10 +1,14 @@
-import { Router} from 'express';
-import {*} from '@controllers/cardController';
+import { Router } from "express";
+import { CardController } from "../controllers/card.controller";
 
-const router = Router();
+const cardRouter = Router();
+const cardController = new CardController();
 
+cardRouter.post("/", cardController.createCard);
+cardRouter.post("/activate", cardController.activateCard);
+cardRouter.post("/load", cardController.loadCard);
+cardRouter.get("/:cardId", cardController.getCard);
+cardRouter.post("/:cardId/redeem", cardController.requestRedemption);
+cardRouter.post("/:cardId/confirm", cardController.confirmRedemption);
 
-router.post('/activate', activateCard);
-
-
-export default router;
+export default cardRouter;

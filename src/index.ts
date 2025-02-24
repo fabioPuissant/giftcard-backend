@@ -1,15 +1,23 @@
-import express, {Request, Response} from 'express';
-import dotenv from 'dotenv';
-import sayHello from '@services/HelloService';
+import express,{Request, Response}  from "express";
+import dotenv from "dotenv";
+import cardRouter from "./routes/card.routes";
+import userRouter from "./routes/user.routes";
+import { errorHandler } from "@middlewares/errorHandler.middleware";
+
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT;
+app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.send(sayHello('Fabdsafsdfsdio'));
-});
+// Routes
+app.use("/cards", cardRouter);
+app.use("/users", userRouter);
+app.use("/", (req: Request,res: Response)=> {res.send("HOME")});
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+// Global error handler (must come after routes)
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
