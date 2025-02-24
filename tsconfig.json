@@ -34,6 +34,7 @@
         "@utils/*": ["src/utils/*"],
         "@controllers/*": ["src/controllers/*"],
         "@models/*": ["src/models/*"],
+        "@interfaces/*": ["src/interfaces/*"],
         "@middlewares/*": ["src/middlewares/*"],
         "@routes/*": ["src/routes/*"],
         "@config/*": ["src/config/*"],
